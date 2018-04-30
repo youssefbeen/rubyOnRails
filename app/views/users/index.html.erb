@@ -1,0 +1,16 @@
+<table class = "table table-striped">
+    <tr>
+        <th>Username</th>
+        <th>E-mail</th>
+        <th>Articles</th>
+    </tr>
+    <% @user.each do |u|%>
+    <tr>
+        <th><%=u.username%></th>
+        <th><%=u.email%></th>
+        <td><%= pluralize(u.articles.count,"article") if u.articles %></td>
+        <td><%= link_to "edit", edit_user_path(u) %></td>
+        <td><%= link_to "delete", user_path(u), method: :delete, data: {confirm: "are u sure?"} %> </td>
+    </tr>
+    <% end %>
+</table>
